@@ -1,10 +1,12 @@
+import sys
+
 def text_analyzer(text = "error"):
     if text == "error":
         print("What is the text to analyze?")
-        return
-    if type(text) != "<type 'str'>":
+        exit()
+    if type(text).__name__ != "str":
         print("AssertionError: argument is not a string")
-        return
+        exit()
     chars = 0
     upper = 0
     lower = 0
@@ -25,8 +27,11 @@ def text_analyzer(text = "error"):
     print("- " + str(lower) + " lower letter(s)")
     print("- " + str(marks) + " punctuation mark(s)")
     print("- " + str(spaces) + " space(s)")
-'''    def doc():
-        print("This function counts the number of upper characters, lower characters, punctuation and spaces in a given text.")
-    if __name__ == '__doc__':
-        sys.exit(main())
-'''
+    
+def main():
+    if len(sys.argv) != 2:
+    	text_analyzer()
+    text_analyzer(sys.argv[1])
+    
+if __name__ == '__main__':
+    main()
